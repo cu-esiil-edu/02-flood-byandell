@@ -1,0 +1,11 @@
+This workflow prepares a reproducible flood analysis by establishing a data setup process, defining the project context, and verifying that the sample streamflow dataset is available.
+
+The notebook should begin with a short introduction to the flood event and explain that the analysis focuses on a time series of streamflow measurements from the Cheyenne River near Wasta. It should define the importance of time-series data for flood analysis and why multiple years of observations are needed to estimate flood frequency and return periods.
+
+Next, the notebook should set up the Python environment with package imports for working with tabular and spatial data, and for creating interactive visualizations. It should include the following packages in alphabetical order (following PEP-8 style): `earthpy` for data management, `geopandas` for geographic data handling, `os` for file operations, `pandas` for dataframes, and `plotly` for plotting. Ensure all packages are installed (e.g., via `!pip install earthpy geopandas pandas plotly` in a code cell) and run the import cell to verify the environment.
+
+The notebook should then declare key workflow variables such as the analysis ID, site name, year of interest, project title, and a descriptive project directory name. These parameters form the basis for the data download and make the workflow easier to reuse. Modify these variables as needed before proceeding.
+
+After establishing parameters, the notebook should create a project folder and download the sample dataset with a tool that manages project-specific data directories (using `earthpy.Project`). It should capture the download location in a variable, then verify the download by listing directory contents and confirming the expected data file (e.g., `cheyenne_streamflow_1934_2024.csv`) is present. If the download fails, check your internet connection or consult the `earthpy` documentation.
+
+Finally, the notebook should note that the setup is complete and explain that the stored project variables can be reused in subsequent analysis steps. Run all cells from top to bottom to ensure reproducibility. This ensures the notebook is both self-describing and ready for follow-on work without requiring repeated setup instructions.

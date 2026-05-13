@@ -1,0 +1,88 @@
+---
+title: "The Midwest underwater"
+subtitle: "Setup and sample data download for Cheyenne River flood analysis"
+author: "Elsa Culler, Nate Quarderer"
+format: html
+---
+
+# Access streamflow data
+
+One way to express how big a flood is by estimating how often larger floods occur. For example, you might have heard news media talking about a “100-year flood”.
+
+In this document, you will write Python code to download and work with a **time series** of streamflow data during the flooding on the Cheyenne River.
+
+A **time series** of data is taken at the same location but collected regularly or semi-regularly over time.
+
+You will then use the data to assess when the flooding was at its worst.
+
+An extra challenge is to consider how the values compared to other years by computing the flood’s **return period**.
+
+## Reflect and respond
+
+Explain what data you will need to complete this analysis, including:
+
+1. What type or types of data do you need?
+2. How many years of data do you think you need to compute the return period of an extreme event like the floods?
+
+
+## STEP 0: Get set up to use Python
+
+Use the cell below to add necessary **package imports** to this document. It’s best to import everything early so folks reading your code can figure out where everything comes from.
+
+```{python}
+# Import libraries
+import earthpy
+import geopandas as gpd
+import pandas as pd
+import plotly.express as px
+```
+
+
+We like to keep important values up at the top of the notebook – it makes them easy to modify. You can use the following code to change parameters about your workflow if you like:
+
+```{python}
+id = 'stars'
+site_name = 'Cheyenne River near Wasta'
+year = 2019
+project_title = 'Cheyenne River Flood Frequency'
+project_dirname = 'flood-cheyenne'
+```
+
+
+## Download sample data
+
+Finally, we have arranged some sample data for you, which you can download using the `earthpy` library. Later on, you’ll learn how to download data from the NWIS using the `dataretrieval` library. For now, you can use the sample data downloaded with the `earthpy` library.
+
+The following code will download the sample data based on the value of `project_title`, and store it in the data directory on your computer. It will also save the path to the downloaded data.
+
+```{python}
+# Create project directory
+project = earthpy.Project(title=project_title, dirname='flood-cheyenne-data')
+
+# Download data
+data_dir = project.get_data()
+
+# Display the project data directory location
+project.project_dir
+```
+
+
+You can use an open science tool called `bash` or the `shell` to work with files and get information about your file system. For example, this code will list the contents of the project directory.
+
+```{python}
+!ls "$project.project_dir"
+```
+
+
+Go check to see if you can find the files using some other method!
+
+
+## Wrap up
+
+Don’t forget to store your variables so you can use them in other notebooks! This code will store all your variables. You might want to specify specific variables, especially if you have large objects in memory that you won’t need in the future.
+
+```{python}
+%store
+```
+
+Finally, be sure to `Restart` and `Run all` to make sure your notebook works all the way through!
